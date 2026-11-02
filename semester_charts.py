@@ -78,18 +78,22 @@ for s in SEMS:
 tl = pd.DataFrame(rows, columns=["sem", "k", "n", "pct", "lo", "hi", "sim", "sim_ci"])
 story["timeline"] = tl.round(3).to_dict(orient="records")
 
-fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 8.2), sharex=True, gridspec_kw={"height_ratios": [1.35, 1], "hspace": 0.12})
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 8.2), sharex=True, gridspec_kw={"height_ratios": [1.35, 1], "hspace": 0.28})
 xs = [DATES[s] for s in SEMS]
 cols = [SEM_COLOR[s] if s in POST else "#b9b8b2" for s in SEMS]
 for s, x, r in zip(SEMS, xs, tl.itertuples()):
     ax1.bar(x, r.pct, width=110, color=AI if s in POST else "#b9b8b2", zorder=3, edgecolor="white", lw=1.5)
     ax1.errorbar(x, r.pct, yerr=[[r.pct - r.lo], [r.hi - r.pct]], color=MUTED, lw=1, capsize=3, zorder=4)
     ax1.text(x, r.hi + 1.2, f"{r.pct:.0f}%", ha="center", fontsize=11, fontweight="bold", color=INK, zorder=5)
-    ax1.text(x, -2.6, f"{r.k}/{r.n}", ha="center", fontsize=7.5, color=MUTED)
+    ax1.text(x, -3.2, f"{r.k}/{r.n}", ha="center", fontsize=7.5, color=MUTED)
+    ax1.text(x, -6.2, LABELS[s].replace(" ", "\n"), ha="center", va="top", fontsize=8, color=INK)
 mark_releases(ax1)
-ax1.set_ylim(-4, 58)
+ax1.set_ylim(-13, 58)
+ax1.set_yticks(range(0, 60, 10))
+ax1.tick_params(labelbottom=True)
+ax1.axhline(0, color=MUTED, lw=0.8)
 ax1.set_ylabel("Submissions that look AI-written (%)")
-ax1.set_title("Roughly 1 in 5 Connect 4 submissions now looks AI-written. Before ChatGPT: none.", loc="left", fontsize=14)
+ax1.set_title("Roughly 1 in 5 Connect 4 submissions now looks AI-written. Before ChatGPT: 1 in 401.", loc="left", fontsize=14)
 fig.text(0.125, 0.035, "Top: share of each semester's submissions classified AI-like (ensemble classifier, 0.25% false-positive rate); "
          "95% Wilson intervals; flagged/total under each bar.\nBottom: mean similarity to AI code across six representations, "
          "95% CI. Shaded = after ChatGPT; dotted lines = model releases.", fontsize=8.5, color=MUTED, va="top")
@@ -104,6 +108,29 @@ date_axis(ax2)
 ax2.set_ylabel("Average similarity to AI code\n(SDs vs pre-ChatGPT students)")
 ax2.set_title("…and the average submission has drifted toward AI style the whole time", loc="left", fontsize=11.5)
 fig.savefig(FIG / "story_1_timeline.png")
+plt.close(fig)
+
+# Slide version: bars only, large type, three key releases labelled horizontally.
+fig, ax = plt.subplots(figsize=(11, 7))
+ax.axvspan(CHATGPT, date(2026, 3, 1), color="#f6f3ee", zorder=0, lw=0)
+for (d, name), y in zip([(CHATGPT, "ChatGPT launches"), (date(2024, 5, 13), "GPT-4o made free"),
+                         (date(2025, 8, 7), "GPT-5")], (54, 54, 47)):
+    ax.axvline(d, color=MUTED, lw=1.2, ls=":", zorder=1)
+    ax.text(d, y, f" {name}", fontsize=14, color=INK, va="center", ha="left" if name != "GPT-5" else "right")
+for s, x, r in zip(SEMS, xs, tl.itertuples()):
+    ax.bar(x, r.pct, width=110, color=AI if s in POST else "#b9b8b2", zorder=3, edgecolor="white", lw=1.5)
+    ax.errorbar(x, r.pct, yerr=[[r.pct - r.lo], [r.hi - r.pct]], color=MUTED, lw=1.2, capsize=4, zorder=4)
+    ax.text(x, r.hi + 1.5, f"{r.pct:.0f}%", ha="center", fontsize=18, fontweight="bold", color=INK, zorder=5)
+    ax.text(x, -3.5, f"{r.k}/{r.n}", ha="center", fontsize=12, color=MUTED)
+    ax.text(x, -7, LABELS[s].replace(" ", "\n"), ha="center", va="top", fontsize=13, color=INK)
+ax.axhline(0, color=MUTED, lw=0.8)
+ax.set_ylim(-15, 58)
+ax.set_yticks(range(0, 60, 10))
+ax.tick_params(labelsize=13)
+ax.set_ylabel("% of submissions that look AI-written", fontsize=15)
+date_axis(ax)
+ax.set_xticks([])
+fig.savefig(FIG / "story_1_timeline_slide.png")
 plt.close(fig)
 
 # ---------------- 2. Ridgeline of similarity distributions ----------------

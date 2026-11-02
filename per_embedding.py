@@ -158,6 +158,10 @@ for rep, name in REPS.items():
         r = sem[s]
         axp.set_title(f"{LABELS[s]}: {r['cluster_pct']:.0f}% in AI clusters ({int(round(r['cluster_pct'] * r['n'] / 100))}/{r['n']})",
                       fontsize=10)
+    for axp in axes[-1]:
+        axp.set_xlabel(f"PC1 ({var[0]:.0%} of variance)")
+    for axp in axes[:, 0]:
+        axp.set_ylabel(f"PC2 ({var[1]:.0%} of variance)")
     fig.suptitle(f"{name}, semester by semester: students inside AI-dominated clusters are orange\n"
                  "(faint orange = AI files, light grey = all pre-ChatGPT students)", fontweight="bold", x=0.02, ha="left")
     fig.tight_layout()
