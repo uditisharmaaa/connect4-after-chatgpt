@@ -1,0 +1,20 @@
+# Secrets
+.env
+
+# Student data (course instructor's; never published) and anything derived from student code
+data/students/
+data/polished/
+embeddings/
+*.npz
+features.csv
+student_scores*.csv
+vocab.json
+
+# Course assignment text (the course forbids publishing assignment descriptions)
+assignment_prompt.txt
+
+# Generated locally
+report/
+logs_*.txt
+__pycache__/
+.DS_Store

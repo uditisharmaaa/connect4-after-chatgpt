@@ -1,0 +1,175 @@
+{
+  "timeline": [
+    {
+      "sem": "Pre-2021",
+      "k": 0,
+      "n": 178,
+      "pct": 0.0,
+      "lo": 0.0,
+      "hi": 2.113,
+      "sim": -0.269,
+      "sim_ci": 0.065
+    },
+    {
+      "sem": "Spring 2021",
+      "k": 0,
+      "n": 33,
+      "pct": 0.0,
+      "lo": 0.0,
+      "hi": 10.427,
+      "sim": 0.07,
+      "sim_ci": 0.17
+    },
+    {
+      "sem": "Fall 2021",
+      "k": 0,
+      "n": 86,
+      "pct": 0.0,
+      "lo": 0.0,
+      "hi": 4.276,
+      "sim": 0.155,
+      "sim_ci": 0.131
+    },
+    {
+      "sem": "Spring 2022",
+      "k": 0,
+      "n": 37,
+      "pct": 0.0,
+      "lo": 0.0,
+      "hi": 9.406,
+      "sim": 0.012,
+      "sim_ci": 0.153
+    },
+    {
+      "sem": "Fall 2022",
+      "k": 1,
+      "n": 67,
+      "pct": 1.493,
+      "lo": 0.264,
+      "hi": 7.982,
+      "sim": 0.475,
+      "sim_ci": 0.162
+    },
+    {
+      "sem": "Spring 2023",
+      "k": 2,
+      "n": 97,
+      "pct": 2.062,
+      "lo": 0.567,
+      "hi": 7.209,
+      "sim": 0.64,
+      "sim_ci": 0.197
+    },
+    {
+      "sem": "Fall 2023",
+      "k": 2,
+      "n": 71,
+      "pct": 2.817,
+      "lo": 0.776,
+      "hi": 9.702,
+      "sim": 0.9,
+      "sim_ci": 0.258
+    },
+    {
+      "sem": "Fall 2024",
+      "k": 17,
+      "n": 103,
+      "pct": 16.505,
+      "lo": 10.568,
+      "hi": 24.851,
+      "sim": 1.593,
+      "sim_ci": 0.301
+    },
+    {
+      "sem": "Fall 2025",
+      "k": 14,
+      "n": 69,
+      "pct": 20.29,
+      "lo": 12.489,
+      "hi": 31.224,
+      "sim": 1.77,
+      "sim_ci": 0.37
+    }
+  ],
+  "composition": {
+    "Clearly student-like": {
+      "Pre-2021": 95.5,
+      "Spring 2021": 84.8,
+      "Fall 2021": 73.3,
+      "Spring 2022": 89.2,
+      "Fall 2022": 80.6,
+      "Spring 2023": 71.1,
+      "Fall 2023": 66.2,
+      "Fall 2024": 43.7,
+      "Fall 2025": 21.7
+    },
+    "Leaning student": {
+      "Pre-2021": 4.5,
+      "Spring 2021": 15.2,
+      "Fall 2021": 26.7,
+      "Spring 2022": 10.8,
+      "Fall 2022": 17.9,
+      "Spring 2023": 26.8,
+      "Fall 2023": 31.0,
+      "Fall 2024": 39.8,
+      "Fall 2025": 58.0
+    },
+    "Leaning AI": {
+      "Pre-2021": 0.0,
+      "Spring 2021": 0.0,
+      "Fall 2021": 0.0,
+      "Spring 2022": 0.0,
+      "Fall 2022": 1.5,
+      "Spring 2023": 2.1,
+      "Fall 2023": 2.8,
+      "Fall 2024": 16.5,
+      "Fall 2025": 17.4
+    },
+    "Indistinguishable from AI": {
+      "Pre-2021": 0.0,
+      "Spring 2021": 0.0,
+      "Fall 2021": 0.0,
+      "Spring 2022": 0.0,
+      "Fall 2022": 0.0,
+      "Spring 2023": 0.0,
+      "Fall 2023": 0.0,
+      "Fall 2024": 0.0,
+      "Fall 2025": 2.9
+    }
+  },
+  "binoculars": {
+    "n_students": 741,
+    "n_ai": 500,
+    "auc_ai_vs_pre": 0.7068266832917707,
+    "threshold_1pct_fpr": 0.8969716386854646,
+    "tpr_at_threshold": 0.0225,
+    "tpr_disguise": 0.12,
+    "pct_flagged": {
+      "Pre-2021": 1.1,
+      "Spring 2021": 0.0,
+      "Fall 2021": 1.2,
+      "Spring 2022": 2.7,
+      "Fall 2022": 0.0,
+      "Spring 2023": 1.0,
+      "Fall 2023": 2.8,
+      "Fall 2024": 0.0,
+      "Fall 2025": 0.0
+    },
+    "spearman_with_classifier": 0.030740165304704983,
+    "spearman_p": 0.40339543458015603,
+    "mean_by_semester": {
+      "Pre-2021": 1.0152,
+      "Spring 2021": 1.025,
+      "Fall 2021": 1.0183,
+      "Spring 2022": 1.0222,
+      "Fall 2022": 1.0338,
+      "Spring 2023": 1.0077,
+      "Fall 2023": 1.0298,
+      "Fall 2024": 1.0251,
+      "Fall 2025": 1.0192
+    },
+    "both_flag": 0,
+    "classifier_only": 36,
+    "binoculars_only": 7
+  }
+}

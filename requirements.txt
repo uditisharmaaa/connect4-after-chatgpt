@@ -1,0 +1,10 @@
+numpy==1.26.4
+pandas==2.2.3
+scipy==1.14.1
+scikit-learn==1.5.2
+matplotlib==3.9.4
+requests==2.34.2
+python-dotenv==1.2.4
+# binoculars.py only (separate Apple-silicon environment)
+torch==2.15.0
+transformers==4.56.2
